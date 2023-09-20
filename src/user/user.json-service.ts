@@ -31,6 +31,9 @@ export class UserJSONService implements UserService {
     }
     getById(id: number): User | null {
 
+        const file = this.fs.readFileSync(this.filePath, 'utf-8');
+        this.users = JSON.parse(file);
+        
      const user =  this.users.find(
             user => user.id == id
         )
